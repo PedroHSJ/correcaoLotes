@@ -13,7 +13,7 @@ try:
     cur = con.cursor()
     
     cur.execute(f'''
-    SELECT i.Cadastro_Id FROM LoteIntegracao i
+    SELECT i.Cadastro_Id as Id FROM LoteIntegracao i
         LEFT JOIN Lote l ON (l.Id = i.Lote_Id)
         INNER JOIN Domicilio d ON (i.Cadastro_Id = d.id)
         WHERE i.Erros LIKE '%Domícilio possui família sem membros.%' AND l.Mes = {date.today().month} AND l.Ano = {date.today().year}
@@ -24,8 +24,8 @@ try:
  '''
 
     arr = []
-    for id,idade in cur:
-        arr.append(id)
+    for Id in cur:
+        arr.append(Id)
 
     if(len(arr) == 0):
         print('Lote sem inconsistência.')
@@ -33,19 +33,20 @@ try:
         ids = "("
         count = 0
         for id in arr:
-            count+=1
-            if(count == len(arr)):
-                ids += "'" + id + "'" + ")"
-            else:
-                ids += "'" + id + "'" + ', '
-        print("QUERRY: ", update_sql + ids + 'AND f.`QuantMembros` = 0')
-        #cur.execute(update_sql + ids + 'AND f.`QuantMembros` = 0')
+           id = ''.join(id)
+           count+=1
+           if(count == len(arr)):
+              ids += "'" + id + "'" + ")"
+           else:
+              ids += "'" + id + "'" + ', '
+        #print("QUERRY: ", update_sql + ids + 'AND f.`QuantMembros` = 0')
+        cur.execute(update_sql + ids + 'AND f.`QuantMembros` = 0')
     
 
 
         con.commit()
         cur.close()
         con.close()
+        print("Lote corrigido com sucesso.")
 except mariadb.Error as e:
     print(f"Error: {e}")
-print(date.today().year)

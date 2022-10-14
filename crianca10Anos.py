@@ -44,5 +44,7 @@ try:
         con.commit()
         cur.close()
         con.close()
+        print("Lote corrigido com sucesso.")
+
 except mariadb.Error as e:
     print(f"Error: {e}")
