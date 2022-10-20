@@ -47,7 +47,7 @@ def domicilio_familia_sem_membro():
             con.commit()
             cur.close()
             con.close()
-            print("Lote corrigido com sucesso.")
+            print("Lote corrigido com sucesso. - domicilioFamiliaSemMembro -")
     except mariadb.Error as e:
         print(f"Error: {e}")
 

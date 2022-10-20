@@ -29,7 +29,7 @@ def numero_moradores():
         con.commit()
         cur.close()
         con.close()
-        print("Lote corrigido com sucesso.")
+        print("Lote corrigido com sucesso. - numeroMoradores -")
 
     except mariadb.Error as e:
         print(f"Error: {e}")

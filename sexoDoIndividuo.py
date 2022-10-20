@@ -47,7 +47,7 @@ def sexo_do_individuo():
             con.commit()
             cur.close()
             con.close()
-            print("Lote corrigido com sucesso.")
+            print("Lote corrigido com sucesso. - sexoDoIndividuo -")
 
     except mariadb.Error as e:
         print(f"Error: {e}")
