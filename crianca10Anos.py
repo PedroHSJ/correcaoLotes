@@ -41,15 +41,6 @@ def crianca10Anos():
         
 
 
-<<<<<<< HEAD
-        con.commit()
-        cur.close()
-        con.close()
-        print("Lote corrigido com sucesso.")
-
-except mariadb.Error as e:
-    print(f"Error: {e}")
-=======
             con.commit()
             cur.close()
             con.close()
@@ -58,4 +49,3 @@ except mariadb.Error as e:
     except mariadb.Error as e:
         print(f"Error: {e}")
 
->>>>>>> 8f0e72ac068d717959c3df8e2c2e4f732e407a3e
