@@ -12,13 +12,12 @@ def sexo_do_individuo():
             database="eas_sp_francodarocha_teste",
         )
         cur = con.cursor()
-        
+
         cur.execute(f'''
-        SELECT i.`Cadastro_Id` AS Id FROM `LoteIntegracao` i
-            LEFT JOIN `Lote` l ON (l.`Id` = i.`Lote_Id`)
-            WHERE i.`Erros` 
-            LIKE '%O campo \'SexoDoIndividuo\' é de preenchimento obrigatório para este tipo de cadastro conforme as regras %'
-            AND l.`Mes` = {date.today().month} AND l.`Ano` = {date.today().year} AND i.`STATUS` = FALSE
+        SELECT i.`Cadastro_Id` FROM `LoteIntegracao` i
+        LEFT JOIN `Lote` l ON (l.`Id` = i.`Lote_Id`)
+        WHERE i.`Erros` LIKE "%O campo \'SexoDoIndividuo\' é de preenchimento obrigatório para este tipo de cadastro conforme as regras %"
+        AND l.`Mes` = 10 AND l.`Ano` = 2022 AND i.`STATUS` = FALSE
         ''')
 
         update_sql = '''UPDATE VisitaDomiciliar set SexoDoIndividuo = 4 WHERE Id IN '''
@@ -39,8 +38,8 @@ def sexo_do_individuo():
                     ids += "'" + id + "'" + ");"
                 else:
                     ids += "'" + id + "'" + ', '
-            print("QUERRY: ", update_sql + ids)
-            #cur.execute(update_sql + ids)
+            #print("QUERRY: ", update_sql + ids)
+            cur.execute(update_sql + ids)
         
 
 

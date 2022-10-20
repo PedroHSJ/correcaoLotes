@@ -20,7 +20,7 @@ def motivos_visita():
             )
             WHERE i.`Erros` 
             LIKE '%O campo ''MotivosVisita'' é de preenchimento obrigatório quando o Desfecho da Visita for igual a REALIZADA!.%'
-            AND l.`Mes` = {date.today().month} AND l.`Ano` = {date.today().yaer} AND i.`STATUS` = FALSE)
+            AND l.`Mes` = {date.today().month} AND l.`Ano` = {date.today().year} AND i.`STATUS` = FALSE)
         ''')
 
         update_sql = '''UPDATE  `VisitaDomiciliar` d
@@ -36,8 +36,8 @@ def motivos_visita():
         if(len(arr) == 0):
             print('Lote sem inconsistência.')
         else:
-            print("QUERRY: ", update_sql)
-            #cur.execute(update_sql)
+            #print("QUERRY: ", update_sql)
+            cur.execute(update_sql)
         
             con.commit()
             cur.close()

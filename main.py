@@ -7,7 +7,7 @@ from numeroMoradores import numero_moradores
 from numeroMoradoresNaoPodeSerPreenchido import numero_moradores_nao_pode_ser_preenchido
 from sexoDoIndividuo import sexo_do_individuo
 from sexoDoIndividuoNaoDeveSerPreenchida_02_03 import sexo_do_individuo_nao_deve_ser_preenchido
-from situacaoMoradiaNaoPodeSerNull import situacao_moradia_nao_pode_ser_null
+from situaçãoMoradiaNaoPodeSerNull import situacao_moradia_nao_pode_ser_null
 from situacaoRuaHigienePessoal import situacao_rua_higiene_pessoal
 from tipoDeLogradouro import tipo_de_logradouro
 from tipoLogradouroPreenchimentoObrigatorio import tipo_logradouro_preenchimento_obrigatorio
@@ -28,6 +28,6 @@ try:
     situacao_rua_higiene_pessoal()
     tipo_de_logradouro()
     tipo_logradouro_preenchimento_obrigatorio()
-except e:
-    print(e)
+except:
+    print("Erro inesperado.")
     

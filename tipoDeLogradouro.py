@@ -2,7 +2,7 @@ import mariadb
 
 def tipo_de_logradouro():
     try:
-         con = mariadb.connect(
+        con = mariadb.connect(
             user="pedro",
             password="1q2w3e4r",
             host ="dbhd.esusatendsaude.com.br",

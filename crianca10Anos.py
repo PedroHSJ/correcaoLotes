@@ -36,8 +36,8 @@ def crianca10Anos():
                     ids += "'" + id + "'" + ");"
                 else:
                     ids += "'" + id + "'" + ', '
-            print("QUERRY: ", update_sql + ids)
-            #cur.execute(update_sql + ids)
+            #print("QUERRY: ", update_sql + ids)
+            cur.execute(update_sql + ids)
         
 
 

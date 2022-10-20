@@ -17,7 +17,7 @@ def situacao_rua_higiene_pessoal():
         LEFT JOIN `Lote` l ON (l.`Id` = i.`Lote_Id`)
         WHERE i.`Erros` LIKE '%SituacaoRua: Higiene Pessoal: Este campo é de preenchimento obrigatório!%'
         AND i.`STATUS` = FALSE
-        AND l.Mes = {date.today().month} AND l.Ano = {date.today().yaer};
+        AND l.Mes = {date.today().month} AND l.Ano = {date.today().year};
         ''')
 
         arr = []
@@ -28,8 +28,8 @@ def situacao_rua_higiene_pessoal():
             print('Lote sem inconsistência.')
         else:
             update_sql = "UPDATE SituacaoDeRua SET AcessosAHigiene = 45 WHERE AcessosAHigiene = '';"
-            print("QUERRY: ", update_sql)
-            #cur.execute(update_sql)
+            #print("QUERRY: ", update_sql)
+            cur.execute(update_sql)
             con.commit()
             cur.close()
             con.close()

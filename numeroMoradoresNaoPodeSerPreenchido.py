@@ -27,8 +27,8 @@ def numero_moradores_nao_pode_ser_preenchido():
         if(len(arr) == 0):
             print('Lote sem inconsistência.')
         else:
-            print("QUERRY: ", update_sql)
-            #cur.execute(update_sql)
+            #print("QUERRY: ", update_sql)
+            cur.execute(update_sql)
             con.commit()
             cur.close()
             con.close()

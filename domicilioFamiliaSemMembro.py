@@ -39,8 +39,8 @@ def domicilio_familia_sem_membro():
                     ids += "'" + id + "'" + ")"
                 else:
                     ids += "'" + id + "'" + ', '
-            print("QUERRY: ", update_sql + ids + 'AND f.`QuantMembros` = 0')
-            #cur.execute(update_sql + ids + 'AND f.`QuantMembros` = 0')
+            #print("QUERRY: ", update_sql + ids + 'AND f.`QuantMembros` = 0')
+            cur.execute(update_sql + ids + 'AND f.`QuantMembros` = 0')
         
 
 

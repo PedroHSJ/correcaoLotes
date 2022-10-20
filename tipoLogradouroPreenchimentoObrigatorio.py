@@ -19,28 +19,24 @@ def tipo_logradouro_preenchimento_obrigatorio():
             )
             WHERE i.`Erros`
             LIKE 'O campo Tipo de Logradouro é de preenchimento obrigatório ou o tipo inserido não existe!%'
-            AND l.`Mes` = {date.today().month} AND l.`Ano` = {date.today().yaer} AND i.`STATUS` = FALSE)
+            AND l.`Mes` = {date.today().month} AND l.`Ano` = {date.today().year} AND i.`STATUS` = FALSE)
         ''')
 
         update_sql = ''' UPDATE Domicilio d SET d.TipoDeLogradouro_Id = 104 WHERE d.TipoDeLogradouro_Id = 130'''
         arr = []
         for Id in cur:
+            print("id: "+ Id)
             arr.append(Id)
 
         if(len(arr) == 0):
             print('Lote sem inconsistência.')
         else:
-            print("QUERRY: ", update_sql)
-            #cur.execute(update_sql)
+            #print("QUERRY: ", update_sql)
+            cur.execute(update_sql)
             con.commit()
             cur.close()
             con.close()
             print("Lote corrigido com sucesso. - tipoLogradouroPreenchimentoObrigatorio - ")
-
-        con.commit()
-        cur.close()
-        con.close()
-        print("Lote corrigido com sucesso.  - tipoDeLogradouro -")
 
     except mariadb.Error as e:
         print(f"Error: {e}")

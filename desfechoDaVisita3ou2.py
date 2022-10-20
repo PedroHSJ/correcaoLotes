@@ -29,7 +29,7 @@ def desfecho_da_visita_3ou2():
             print('Lote sem inconsistência.')
         else:
             ids = "("
-              count = 0
+            count = 0
             for id in arr:
                 id = ''.join(id)
                 count+=1
@@ -37,8 +37,8 @@ def desfecho_da_visita_3ou2():
                     ids += "'" + id + "'" + ")"
                 else:
                     ids += "'" + id + "'" + ', '
-            print("QUERRY: ", update_sql + ids)
-            #cur.execute(update_sql + ids)
+            #print("QUERRY: ", update_sql + ids)
+            cur.execute(update_sql + ids)
 
             cur.execute(update_sql)
             con.commit()
