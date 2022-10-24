@@ -1,13 +1,14 @@
 import mariadb
+from user import conection
 
 def sexo_do_individuo_nao_deve_ser_preenchido():
     try:
         con = mariadb.connect(
-            user="pedro",
-            password="1q2w3e4r",
-            host ="dbhd.esusatendsaude.com.br",
-            port=3306,
-            database="eas_sp_francodarocha_teste",
+            user=conection["user"],
+            password=conection["password"],
+            host =conection["host"],
+            port=conection["port"],
+            database=conection["database"],
         )
         cur = con.cursor()
 
